@@ -39,8 +39,9 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@reflecx-mbox-restore-label-prefix
+      - uses: actions/checkout@v3
         with:
+          ref: reflecx-mbox-restore-label-prefix
           persist-credentials: false
           fetch-depth: 0
 
