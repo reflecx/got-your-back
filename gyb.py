@@ -2317,7 +2317,10 @@ def main(argv):
                 label = 'DRAFT' 
               cased_labels.append(label)
             else:
-              cased_labels.append(label)
+               if options.label_prefix:
+                  cased_labels.append(options.label_prefix[0] + "/" + label)
+               else:
+                  cased_labels.append(label)
           labelIds = labelsToLabelIds(cased_labels)
           rewrite_line(" message %s - %s%%" % (current, mbox_pct))
           full_message = message.as_bytes()
