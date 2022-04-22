@@ -1,10 +1,7 @@
 name: Build and test GYB
 
 on:
-  push:
-  pull_request:
-  schedule:
-    - cron: '37 22 * * *'
+  workflow_dispatch:
 
 defaults:
   run:
@@ -27,10 +24,6 @@ jobs:
             jid: 1
             goal: build
             arch: x86_64
-          - os: macos-11
-            jid: 2
-            goal: build
-            arch: x86_64
           - os: windows-2022
             jid: 3
             goal: build
@@ -39,30 +32,14 @@ jobs:
             jid: 4
             goal: build
             arch: Win32
-          - os: [self-hosted, linux, arm64]
-            jid: 5
-            goal: build
-            arch: aarch64
-          - os: [self-hosted, linux, arm]
-            jid: 6
-            goal: build
-            arch: armv7l
           - os: ubuntu-20.04
             goal: test
             python: 3.7
             jid: 7
-          - os: ubuntu-20.04
-            goal: test
-            python: 3.8
-            jid: 8
-          - os: ubuntu-20.04
-            goal: test
-            python: 3.9
-            jid: 9
 
     steps:
 
-      - uses: actions/checkout@master
+      - uses: actions/checkout@reflecx-mbox-restore-label-prefix
         with:
           persist-credentials: false
           fetch-depth: 0
